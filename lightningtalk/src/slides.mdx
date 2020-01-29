@@ -1,7 +1,7 @@
 import arex from '../assets/arex.jpg';
 
-# Julia Dash on Cloud Run
-## 
+# Julia, GCP Cloud Run and Dash
+## Julia、GCP Cloud RunでDash 
 
 ---
 
@@ -43,3 +43,132 @@ import arex from '../assets/arex.jpg';
 ---
 
 # However, I am only just starting.
+#
+
+---
+
+# What is Dash?
+##
+
+---
+
+# It's a framework for building interactive web dashboards, particulary for data science.
+
+---
+
+# It's made by Plotly, a Canadian IT company, which is famous for plotly.js
+##
+
+---
+
+# There is a very nice <a href="https://dash-gallery.plotly.host/Portal/">gallery of sample apps</a>.
+
+---
+
+# Both Python and R are officially supported. 
+
+---
+
+# Basically, you write Python or R and get an web app with Plotly.js and React.js
+
+---
+
+# However, no JavaScript need be written.
+
+---
+
+# In the case of Python, the web server is Flask.
+##
+
+---
+
+# Looking at <a href="https://github.com/plotly/dashR">dashR</a>, the Github repository for the R integration...
+##
+
+---
+
+# ...there seems to only be about 3000 lines of R code...
+##
+
+---
+
+# ...mostly related to the "fiery" server for R.
+
+---
+
+# Obviously, Julia should also be supported.
+#
+
+---
+
+# Last October, @waralex announced <a href="https://github.com/waralex/Dashboards.jl">Dashboards.jl</a> at < a href="https://discourse.julialang.org/t/developing-julia-interface-for-plotly-dash/30533/">discourse.julialang.org</a>.
+##
+
+---
+
+# Dashboards.jl uses HTTP.jl
+#
+
+---
+
+# Currently, there are about 2000 lines of Julia code.
+#
+
+---
+
+# In the Python universe, there is Dash, Bokeh, Streamlit, and Voila.
+##  
+
+---
+
+# What's different?
+#
+
+<Table>
+  <TableHeader>
+    <TableHeaderItem></TableHeaderItem>
+    <TableHeaderItem>Dash</TableHeaderItem>
+    <TableHeaderItem>Bokeh</TableHeaderItem>
+    <TableHeaderItem>Streamlit</TableHeaderItem>
+    <TableHeaderItem>Voila</TableHeaderItem>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableItem>Tornado WebSockets</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>✔️</TableItem>
+    </TableRow>
+    <TableRow>
+      <TableItem>Serverless Environment</TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+    </TableRow>
+    <TableRow>
+      <TableItem>Julia</TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+    </TableRow>
+  </TableBody>
+
+---
+
+# There are interesting points about all of them. 
+## 
+
+---
+
+# However, Dash is great because it can be used in a serverless environment...
+#
+
+---
+
+# ...and supports multiple programming languages.
+##
+
+---
