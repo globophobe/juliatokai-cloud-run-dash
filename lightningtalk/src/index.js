@@ -1,9 +1,10 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
-import { MDXProvider } from '@mdx-js/react';
+import { MDXProvider } from "@mdx-js/react";
 
 import {
+  themes: { defaultTheme},
   Deck,
   FlexBox,
   Slide,
@@ -12,13 +13,11 @@ import {
   FullScreen,
   Notes,
   mdxComponentMap
-} from 'spectacle';
-
+} from "spectacle";
 
 // SPECTACLE_CLI_MDX_START
-import slides, { notes } from './slides.mdx';
+import slides, { notes } from "./slides.mdx";
 // SPECTACLE_CLI_MDX_END
-
 
 // SPECTACLE_CLI_THEME_START
 const colors = {
@@ -32,7 +31,7 @@ const marginBottom = "0.5em";
 
 const lineHeight = "1.2em !important";
 
-const theme = {
+const theme = defaultTheme(
   colors,
   {
     primary: "Montserrat",
@@ -91,7 +90,7 @@ const theme = {
       }
     }
   }
-};
+);
 // SPECTACLE_CLI_THEME_END
 
 // SPECTACLE_CLI_TEMPLATE_START
@@ -129,4 +128,4 @@ const Presentation = () => (
   </MDXProvider>
 );
 
-render(<Presentation />, document.getElementById('root'));
+render(<Presentation />, document.getElementById("root"));
