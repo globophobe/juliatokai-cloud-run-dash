@@ -1,0 +1,330 @@
+import { Layout, Image, Appear, Fit, Fill, Heading, Link, Table, TableHeader, TableHeaderItem, TableBody, TableRow, TableItem, Text, S } from 'spectacle';
+import { DarkSlide, CodeSlide } from './slides';
+import arex from '../assets/arex.jpg';
+import julia from '../assets/julia.png';
+import cloudRun from '../assets/cloud-run.png';
+import dash from '../assets/dash.png';
+import fieryDash from '../assets/fiery-dash.png';
+
+# Julia、GCP Cloud RunでDash 
+
+<div style={{ marginLeft: "auto", marginRight: "auto" }}>
+  <Image style={{ display: "inline-block", height: "20vmin", marginBottom: "2.1em", verticalAlign: "bottom" }} src={julia} />
+  <p style={{ display: "inline-block", fontSize: "7vmin", marginBottom: "8.5vmin", verticalAlign: "bottom", marginRight: "1.5vmin" }}>、</p>
+  <Image style={{ display: "inline-block", verticalAlign: "bottom", marginRight: "3.5vmin" }} src={cloudRun} />
+  <p style={{ display: "inline-block", fontSize: "7vmin", marginBottom: "8.5vmin", verticalAlign: "bottom" }}>で</p>
+  <Image style={{ display: "inline-block", height: "20vmin", marginBottom: "6vmin", verticalAlign: "bottom" }} src={dash} />
+</div>
+
+---
+
+# These slides are at Connpass. So you can check them out.
+## スライドはConnpassにアップされています。 是非みてください。
+
+---
+
+# Who am I?
+## お前誰?
+
+---
+
+# My name is Alex, and I'm from Canada 🇨🇦
+## アレックスで、カナダから来ました。
+
+---
+
+<Layout>
+  <Fill style={{ margin: "auto" }}>
+    <Heading size={3}>My username on Connpass is "globophobe".</Heading>
+    <Heading size={4}>Connpassのユーザ名は「globophobe」です。</Heading>
+  </Fill>
+  <Fill>
+    <Image style={{ borderRadius: "35px", marginLeft: "1em" }} src={arex} />
+  </Fill>
+</Layout>
+
+---
+
+# I make stuff with Python, Django, Vue.js and React Native. 
+## PythonやDjangoやVue.jsやReact Nativeでプログラミングしています。
+
+---
+
+# I have been interested in Julia for a long time.
+## 長い間興、Juliaに興味があります。
+
+---
+
+# However, I am only just starting.
+# しかし、始まってばかりの感じです。
+
+---
+
+# What is Dash?
+## Dash て何？
+
+---
+
+# It's a framework for building web dashboards, particulary for data science.
+## Webダッシュボードを作るフレームワークです。特にデータサイエンス向けダッシュボードです。
+
+---
+
+# It's made by <Link href="https://plot.ly/">Plotly</Link>, a Canadian IT company, which is famous for plotly.js
+## plotly.jsで有名になった、カナダのIT企業Plotlyによって作成されました。
+
+---
+
+# There is a very nice <Link href="https://dash-gallery.plotly.host/Portal/">gallery of sample apps</Link>.
+## サンプルアプリの良い感じのギャラリーがあります。
+
+---
+
+# Both Python and R are officially supported.
+## PythonとRの両方が公式にサポートされています。
+
+---
+
+# Basically, you write Python or R and get an web app with Plotly.js and React.js
+## つまりに、PythonまたはRを書いて、Plotly.jsとReact.jsでWebアプリを作成します。
+
+---
+
+# No JavaScript need be written.
+## JavaScriptを書く事が必要ないです。
+
+---
+
+# In the case of Python, the web server is Flask.
+## Pythonの場合、アプリサーバーはFlaskです。
+
+---
+
+# Looking at <Link href="https://github.com/plotly/dashR">dashR</Link>, the Github repository for the R integration...
+## R統合のGithubリポジトリ、dashRを見ると...
+
+---
+
+# ...there seems to only be about 3000 lines of R code...
+## Rコードは約3000行がしかないです。
+
+---
+
+# ...mostly related to the "Fiery" server for R.
+## 主にRの「Fiery」ていうアプリサーバーに関する事みたいなんので、
+
+---
+
+# Obviously, Julia should also be supported.
+# Juliaもサポートされるべきです。
+
+---
+
+# Last October, waralex announced [Dashboards.jl](https://github.com/waralex/Dashboards.jl) at [discourse.julialang.org](https://discourse.julialang.org/t/developing-julia-interface-for-plotly-dash/30533/)
+## discourse.julialang.orgで、waralexさんは昨年の10月、Dashboards.jlを公開のを発表しました。
+
+---
+
+# Dashboards.jl uses HTTP.jl
+## Dashboards.jlはHTTP.jlを使用します。
+
+---
+
+# Currently, including tests, there are about 2000 lines of Julia code.
+## 現在、テストを含めて、約2000行のジュリアコードがあります。
+
+---
+
+# In the Python universe, there is Dash, <Link href="https://panel.holoviz.org/">Panel</Link> (Bokeh), <Link href="https://www.streamlit.io/">Streamlit</Link>, and <Link href="https://github.com/voila-dashboards/voila">Voila</Link>.
+## PythonでWebダッシュボードを作るフレームワークには、Dash、Panel (Bokeh)、Streamlit、そしてVoilaがあります。 
+
+---
+
+# What's the difference?
+## 違いは？
+
+<Table style={{ marginTop: "10vmin" }}>
+  <TableHeader>
+    <TableHeaderItem></TableHeaderItem>
+    <TableHeaderItem style={{ width: "20vmin", fontSize: "5vmin" }}>Dash</TableHeaderItem>
+    <TableHeaderItem style={{ width: "20vmin", fontSize: "5vmin" }}>Panel</TableHeaderItem>
+    <TableHeaderItem style={{ width: "20vmin", fontSize: "5vmin" }}>Streamlit</TableHeaderItem>
+    <TableHeaderItem style={{ width: "20vmin", fontSize: "5vmin" }}>Voila</TableHeaderItem>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableItem style={{ textAlign: "left", fontSize: "5vmin" }}><strong>Julia</strong></TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+    </TableRow>
+    <TableRow>
+      <TableItem style={{ textAlign: "left", fontSize: "5vmin" }}><strong>Serverless</strong></TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>❌</TableItem>
+    </TableRow>
+    <TableRow>
+      <TableItem style={{ textAlign: "left", fontSize: "5vmin" }}><strong>Tornado WebSockets</strong></TableItem>
+      <TableItem>❌</TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>✔️</TableItem>
+      <TableItem>✔️</TableItem>
+    </TableRow>
+  </TableBody>
+</Table>
+
+---
+
+# There are interesting points about all of them. 
+## 一つずつについて興味深い点があります。
+
+---
+
+# However, Dash is great because it can be used in a serverless environment...
+# しかし、Dashはサーバーレス環境で使用できる事で...
+
+---
+
+# ...and supports multiple programming languages.
+## ...複数のプログラミング言語をサポートされています。
+
+---
+
+# There is a caveat, though.
+## けれど、注意点があります。
+
+---
+
+# Incidentally, it is also why Dash can be used in a serverless environment.
+## ちなみに、Dashをサーバーレス環境で使用出来る理由はこれです。
+
+---
+
+# The state of a Dash app is stored on the client.
+# Dashアプリのデータはクライアントにあります。
+
+---
+
+# This means that "when [the] Dash app UI changes, the state of your app..." 
+## 「DashアプリのUIが変更されると、アプリのデータが...
+
+---
+
+# "...makes a round-trip from client to server to client, and never persists on the server."
+## クライアントからサーバーへ、クライアントへの往復を行い、サーバー上で永続化する事なし」の意味します。
+
+---
+
+<Layout>
+	<Fill style={{ margin: "auto" }}>
+		<Heading size={4}>Example, multiple R "Fiery" server processes serve multiple clients.</Heading>
+		<Heading size={5}>たとえば、複数のR「Fiery」サーバープロセスが複数のクライアントにサービスを提供します。</Heading>
+	</Fill>
+	<Fill>
+		<Image src={fieryDash} style={{ height: "55vmin", marginTop: "12vmin", marginLeft: "8vmin" }} />
+	</Fill>
+</Layout>
+
+
+---
+
+# GCP Cloud Run seems great for Julia.
+## Cloud RunはJuliaに最適です。
+
+---
+
+# It's serverless with Knative (Docker containers).
+## Knative（Dockerコンテナー）でサーバーレスです。
+
+---
+
+# The server process listens on environment variable PORT.
+## サーバープロセスは、環境変数PORT番で耳をすませます。
+
+---
+
+export default CodeSlide
+
+```julia
+import HTTP
+using Dashboards
+```
+
+```julia
+port = get(ENV, "PORT", 8080)
+port = port isa String ? parse(Int64, port) : port
+```
+
+---
+
+# The following, is from the first <Link href="https://dash.plot.ly/getting-started">Dash tutorial</Link>.
+## 次は、Dashの最初のチュートリアルからの変換されたコードです。
+
+---
+
+export default CodeSlide
+
+```julia
+external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
+```
+
+```julia
+app = Dash("Test app", external_stylesheets=external_stylesheets) do
+    html_div() do
+        html_h1("Hello Dashboards"),
+        html_div("Dashboards: Julia interface for Dash"),
+        dcc_graph(
+            id = "example-graph",
+            figure = (
+                data = [
+                    (x = [1, 2, 3], y = [4, 1, 2], type = "bar", name = "SF"),
+                    (x = [1, 2, 3], y = [2, 4, 5], type = "bar", name = "Montréal"),
+                ],
+                layout = (title = "Dash Data Visualization",)
+            )
+        )
+    end
+end
+```
+
+---
+
+# It seems the server process should bind to "0.0.0.0"
+## サーバープロセスは「0.0.0.0」にバインドする必要がありそうです。
+
+
+---
+
+export default CodeSlide
+
+```julia
+handler = make_handler(app, debug = true)
+```
+
+```julia
+# Bind to all interfaces.
+HTTP.serve(handler, "0.0.0.0", port)
+```
+
+---
+
+# Let's run it on <Link href="https://julia-test-n673kvbdna-an.a.run.app/">GCP Cloud Run</Link>.
+## Cloud Runで実行してみましょう。
+
+---
+
+# The preceeding, as well as subsequent Dash tutorials... 
+## この前のチュートリアルのコード、そして後続のDashチュートリアルのコードは...
+
+---
+
+# ...have been converted to Julia in waralex's <Link href="https://github.com/waralex/DashboardsExamples">DashboardsExamples</Link>.
+## ...waralexのDashboardsExamplesのGitHubリポジトリでJuliaに変換された。
+
+---
+
+# That’s all. Thanks for listening.
+## 以上です。ご清聴ありがとうございます。
