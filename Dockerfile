@@ -13,6 +13,5 @@ ENV JULIA_PROJECT "."
 RUN julia -e "using Pkg; pkg\"activate . \"; pkg\"instantiate\"; pkg\"precompile\"; "
 
 ENV JULIA_DEPOT_PATH "/home/julia/.julia"
-ENV PORT 8080
 
 CMD julia app.jl
