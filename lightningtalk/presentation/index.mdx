@@ -5,7 +5,6 @@ import julia from '../assets/julia.png';
 import cloudRun from '../assets/cloud-run.png';
 import dash from '../assets/dash.png';
 import fieryDash from '../assets/fiery-dash.png';
-import cloudRunLog from '../assets/cloud-run-log.png';
 
 # Julia、GCP Cloud RunでDash 
 
@@ -401,21 +400,6 @@ export default CodeSlide
    }
 }
 ```
----
-
-# 
-
-<Layout>
-  <Fill style={{ margin: "auto" }}>
-    <Heading size={3}>In asia-northeast-1 region, average response time seems to about 10ms</Heading>
-    <Heading size={4}>asia-northeast-1地域では、平均応答時間は約10ミリ秒ぐらいです。</Heading>
-  </Fill>
-  <Fill>
-    <Image style={{ borderRadius: "5px", marginLeft: "30vmin", height: "85vmin" }} src={cloudRunLog} />
-  </Fill>
-</Layout>
-
-
 ---
 
 # GCP Cloud Run <Link href="https://cloud.google.com/run/docs/issues">does not support inbound WebSockets</Link>.
