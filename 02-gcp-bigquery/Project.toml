@@ -1,0 +1,9 @@
+[deps]
+Conda = "8f4d0f93-b110-5947-807f-2305c1781a2d"
+Dashboards = "9024f26f-ba4d-4e0a-965a-ad5b1da667aa"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DotEnv = "4dc1fcf4-5e3b-5448-94ab-0c38ec0385c1"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+WebSockets = "104b5d7c-a370-577a-8038-80a2059c5097"
