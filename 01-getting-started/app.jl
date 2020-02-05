@@ -23,5 +23,5 @@ app = Dash("Test app", external_stylesheets=external_stylesheets) do
     end
 end
 
-handler = make_handler(app, debug = true)
+handler = make_handler(app, debug = false)
 HTTP.serve(handler, "0.0.0.0", port)

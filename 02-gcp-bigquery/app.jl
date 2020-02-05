@@ -53,5 +53,5 @@ callback!(app, callid"interval-component.n_intervals => live-update-text.childre
     return []
 end
 
-handler = make_handler(app, debug = true)
+handler = make_handler(app, debug = false)
 HTTP.serve(handler, "0.0.0.0", port)
