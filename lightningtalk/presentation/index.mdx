@@ -5,6 +5,7 @@ import julia from '../assets/julia.png';
 import cloudRun from '../assets/cloud-run.png';
 import dash from '../assets/dash.png';
 import fieryDash from '../assets/fiery-dash.png';
+import cloudRunLog from '../assets/cloud-run-log.png';
 
 # Julia、GCP Cloud RunでDash 
 
@@ -77,6 +78,11 @@ import fieryDash from '../assets/fiery-dash.png';
 
 # There is a very nice <Link href="https://dash-gallery.plotly.host/Portal/">gallery of sample apps</Link>.
 ## サンプルアプリの良い感じのギャラリーがあります。
+
+---
+
+# For example, here is a <Link href="https://dash-gallery.plotly.host/dash-daq-satellite-dashboard/">dashboard of satellite telemetry</Link>.
+## たとえば、これは衛星遠隔測定法のダッシュボードです。
 
 ---
 
@@ -326,7 +332,7 @@ HTTP.serve(handler, "0.0.0.0", port)
 
 ---
 
-# It doesn't seem to be documented in waralex's GitHub repositories, ...
+# It doesn't seem to be documented in waralex's GitHub repositories...
 ## waralexのGitHubリポジトリには文書化されていないようですが...
 
 ---
@@ -366,6 +372,47 @@ end
 ```
 ---
 
+# Example server response:
+## サーバー応答の例：
+
+---
+
+export default CodeSlide
+
+```json
+{ 
+   "response":{ 
+      "props":{ 
+         "children":[ 
+            { 
+               "type":"Span",
+               "namespace":"dash_html_components",
+               "props":{ 
+                  "children":0
+               }
+            }
+         ]
+      }
+   }
+}
+```
+---
+
+# 
+
+<Layout>
+  <Fill style={{ margin: "auto" }}>
+    <Heading size={3}>In asia-northeast-1 region, average response time seems to about 10ms</Heading>
+    <Heading size={4}>asia-northeast-1地域では、平均応答時間は約10ミリ秒ぐらいです。</Heading>
+  </Fill>
+  <Fill>
+    <Image style={{ borderRadius: "5px", marginLeft: "30vmin", height: "85vmin" }} src={cloudRunLog} />
+  </Fill>
+</Layout>
+
+
+---
+
 # GCP Cloud Run <Link href="https://cloud.google.com/run/docs/issues">does not support inbound WebSockets</Link>.
 ## GCP Cloud RunはインバウンドWebSocketをサポートしていません。
 
@@ -374,6 +421,7 @@ end
 # However, outbound WebSockets are supported.
 ## しかし、アウトバウンドWebSocketはサポートされています。
 
+---
 
 # So, I opened a WebSocket connection from Julia to a Bitcoin exchange.
 ## そこで、Juliaからビットコイン取引所へのWebSocket接続を開きました。
@@ -384,6 +432,7 @@ end
 ## ダッシュボードは、Google BigQueryとFireStoreからのデータの読み込みを含み、進行中の作業です。
 
 ---
+
 
 # That’s all. Thanks for listening.
 ## 以上です。ご清聴ありがとうございます。
