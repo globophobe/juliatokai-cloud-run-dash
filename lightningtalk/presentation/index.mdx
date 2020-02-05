@@ -5,6 +5,7 @@ import julia from '../assets/julia.png';
 import cloudRun from '../assets/cloud-run.png';
 import dash from '../assets/dash.png';
 import fieryDash from '../assets/fiery-dash.png';
+import satelliteTelemetry from '../assets/satellite-telemetry.png';
 
 # Julia、GCP Cloud RunでDash 
 
@@ -80,8 +81,15 @@ import fieryDash from '../assets/fiery-dash.png';
 
 ---
 
-# For example, here is a <Link href="https://dash-gallery.plotly.host/dash-daq-satellite-dashboard/">dashboard of satellite telemetry</Link>.
-## たとえば、これは衛星遠隔測定法のダッシュボードです。
+<Layout>
+  <Fill style={{ margin: "auto" }}>
+    <Heading size={3}>For example, here is a <Link href="https://dash-gallery.plotly.host/dash-daq-satellite-dashboard/">dashboard of satellite telemetry</Link>.</Heading>
+    <Heading size={4}>たとえば、これは衛星遠隔測定法のダッシュボードです。</Heading>
+  </Fill>
+  <Fill>
+    <Link href="https://dash-gallery.plotly.host/dash-daq-satellite-dashboard/"><Image style={{ borderRadius: "35px", marginLeft: "6vmin", height: "70vmin" }} src={satelliteTelemetry} /></Link>
+  </Fill>
+</Layout>
 
 ---
 
