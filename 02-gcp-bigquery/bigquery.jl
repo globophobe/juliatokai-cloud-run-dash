@@ -3,23 +3,11 @@ module BigQuery
 export load_dataframe
 
 using DataFrames
-using DotEnv
 using PyCall
+include("utils.jl")
+using .Utils
 
-env = DotEnv.config()
-
-CREDENTIALS = "GOOGLE_APPLICATION_CREDENTIALS"
-DATASET = "BIGQUERY_DATASET"
-TABLE = "BIGQUERY_TABLE"
-LOCATION = "BIGQUERY_LOCATION"
-
-is_production = get(ENV, "IS_PRODUCTION", nothing)
-is_production = is_production isa String ? true : false
-
-if !is_production
-  path = env[CREDENTIALS]
-  ENV[CREDENTIALS] = abspath(path)
-end
+set_env()
 
 py"""
 import os
@@ -27,7 +15,8 @@ import google.auth
 from google.cloud import bigquery
 
 def query(credentials_file, dataset, table_name, date_from, date_to, location=None):
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_file
+    if os.path.exists(credentials_file):
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_file
 
     credentials, project_id = google.auth.default(
         scopes=["https://www.googleapis.com/auth/cloud-platform"]

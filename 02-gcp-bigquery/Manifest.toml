@@ -73,12 +73,6 @@ git-tree-sha1 = "88bb0edb352b16608036faadcc071adda068582a"
 uuid = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 version = "0.8.1"
 
-[[DotEnv]]
-deps = ["Test"]
-git-tree-sha1 = "fc5ca60ba2dcfc01ca61a23e28a20d2dfd19a045"
-uuid = "4dc1fcf4-5e3b-5448-94ab-0c38ec0385c1"
-version = "0.2.1"
-
 [[Future]]
 deps = ["Random"]
 uuid = "9fa8497b-333b-5362-9e8d-4d0656e87820"

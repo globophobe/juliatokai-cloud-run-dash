@@ -311,7 +311,7 @@ HTTP.serve(handler, "0.0.0.0", port)
 
 ---
 
-# Let's run it on <Link href="https://julia-test-n673kvbdna-an.a.run.app/">GCP Cloud Run</Link>.
+# Let's run it on <Link href="https://julia-gcp-dash-n673kvbdna-an.a.run.app/">GCP Cloud Run</Link>.
 ## Cloud Runで実行してみましょう。
 
 ---
@@ -323,6 +323,65 @@ HTTP.serve(handler, "0.0.0.0", port)
 
 # ...have been converted to Julia in waralex's <Link href="https://github.com/waralex/DashboardsExamples">DashboardsExamples</Link>.
 ## ...waralexのDashboardsExamplesのGitHubリポジトリでJuliaに変換された。
+
+---
+
+# It doesn't seem to be documented in waralex's GitHub repositories, ...
+## waralexのGitHubリポジトリには文書化されていないようですが...
+
+---
+
+# ...but Dash supports an interval callback.
+## ....Dashはインターバルコールバックをサポートしています。
+
+---
+
+export default CodeSlide
+
+```julia
+app = Dash("App Name") do
+    html_div() do
+        html_div(id = "display-id"),
+        dcc_interval(
+            id = "interval-id",
+            interval = 1000,
+            n_intervals = 0
+        )
+    end
+end
+```
+---
+
+# Basically, poll the server once a second.
+## 1秒ごとにサーバーの更新をポーリングします。
+
+---
+
+export default CodeSlide
+
+```julia
+callback!(app, callid"interval-id.n_intervals => display-id.children") do n_intervals
+    return [ html_span(n_intervals) ]
+end
+```
+---
+
+# GCP Cloud Run <Link href="https://cloud.google.com/run/docs/issues">does not support inbound WebSockets</Link>.
+## GCP Cloud RunはインバウンドWebSocketをサポートしていません。
+
+---
+
+# However, outbound WebSockets are supported.
+## しかし、アウトバウンドWebSocketはサポートされています。
+
+
+# So, I opened a WebSocket connection from Julia to a Bitcoin exchange.
+## そこで、Juliaからビットコイン取引所へのWebSocket接続を開きました。
+
+---
+
+# The result, including loading data from Google BigQuery and FireStore, is a <Link href="https://julia-gcp-bigquery-n673kvbdna-an.a.run.app/">work in progress</Link>.
+## ダッシュボードは、Google BigQueryとFireStoreからのデータの読み込みを含み、進行中の作業です。
 
 ---
 
