@@ -1,0 +1,3 @@
+[deps]
+Dashboards = "9024f26f-ba4d-4e0a-965a-ad5b1da667aa"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"

@@ -46,33 +46,24 @@ function load_dataframe(date_from, date_to)
     )
 
     timestamp = []
-    open = []
-    high = []
-    low = []
-    close = []
+    level = []
     buyVolume = []
     sellVolume = []
     buyTicks = []
     sellTicks = []
-  
+ 
     for row in result
       push!(timestamp, get(row, 1))
-      push!(open, get(row, 3))
-      push!(high, get(row, 4))
-      push!(low, get(row, 5))
-      push!(close, get(row, 6))
-      push!(buyVolume, get(row, 7))
-      push!(sellVolume, get(row, 8))
-      push!(buyTicks, get(row, 9))
-      push!(sellTicks, get(row, 10))
+      push!(level, get(row, 3))
+      push!(buyVolume, get(row, 5))
+      push!(sellVolume, get(row, 6))
+      push!(buyTicks, get(row, 7))
+      push!(sellTicks, get(row, 8))
     end
 
     DataFrames.DataFrame(
       timestamp = timestamp,
-      open = open,
-      high = high,
-      low = low,
-      close = close,
+      level = level,
       buyVolume = buyVolume,
       sellVolume = sellVolume,
       buyTicks = buyTicks,
