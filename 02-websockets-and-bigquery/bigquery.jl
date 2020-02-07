@@ -14,7 +14,7 @@ import os
 import google.auth
 from google.cloud import bigquery
 
-def query(credentials_file, dataset, table_name, date_from, date_to, location=None):
+def query(credentials_file, dataset, table_name, date, location=None):
     if os.path.exists(credentials_file):
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_file
 
@@ -24,8 +24,7 @@ def query(credentials_file, dataset, table_name, date_from, date_to, location=No
     bq = bigquery.Client(credentials=credentials, project=project_id, location=location)
     job_config = bigquery.QueryJobConfig(
         query_parameters=[
-            bigquery.ScalarQueryParameter("date_from", "DATE", date_from),
-            bigquery.ScalarQueryParameter("date_to", "DATE", date_to),
+            bigquery.ScalarQueryParameter("date", "DATE", date),
         ]
     )
 
@@ -33,20 +32,22 @@ def query(credentials_file, dataset, table_name, date_from, date_to, location=No
     table_id = f"{dataset}.{table_name}"
     sql = f'''
         SELECT * FROM {table_id}
-        WHERE date >= @date_from
-        AND date <= @date_to
+        WHERE date = @date
         ORDER BY timestamp, index;
     '''
     return bq.query(sql, job_config=job_config)
 """
 
-function load_dataframe(date_from, date_to)
+function load_dataframe(date)
     result = py"query"(
-      ENV[CREDENTIALS], ENV[DATASET], ENV[TABLE], date_from, date_to; location=ENV[LOCATION]
+      ENV[CREDENTIALS], ENV[DATASET], ENV[TABLE], date; location=ENV[LOCATION]
     )
 
     timestamp = []
-    level = []
+    open = []
+    low = []
+    high = []
+    close = []
     buyVolume = []
     sellVolume = []
     buyTicks = []
@@ -54,16 +55,22 @@ function load_dataframe(date_from, date_to)
  
     for row in result
       push!(timestamp, get(row, 1))
-      push!(level, get(row, 3))
-      push!(buyVolume, get(row, 5))
-      push!(sellVolume, get(row, 6))
-      push!(buyTicks, get(row, 7))
-      push!(sellTicks, get(row, 8))
+      push!(open, get(row, 2))
+      push!(low, get(row, 3))
+      push!(high, get(row, 4))
+      push!(close, get(row, 5))
+      push!(buyVolume, get(row, 6))
+      push!(sellVolume, get(row, 7))
+      push!(buyTicks, get(row, 8))
+      push!(sellTicks, get(row, 9))
     end
 
     DataFrames.DataFrame(
       timestamp = timestamp,
-      level = level,
+      open = open,
+      low = low,
+      high = high,
+      close = close,
       buyVolume = buyVolume,
       sellVolume = sellVolume,
       buyTicks = buyTicks,

@@ -24,7 +24,7 @@ function open_websocket()
 
           for trade in trade_data
             pushfirst!(trades, trade)
-            if length(trades) > 10
+            if length(trades) > 25
               pop!(trades) 
             end
           end

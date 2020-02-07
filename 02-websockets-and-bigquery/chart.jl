@@ -1,21 +1,27 @@
 module Chart
 
+using PlotlyBase
+
+include("bigquery.jl")
+using .BigQuery
+
 export get_figure
   
-function get_figure(data_frame)
+function get_figure(date)
+    data_frame = load_dataframe(date)
     if size(data_frame, 1) > 0
         return (
             data = [
                 ( x = data_frame.timestamp, 
-                  open = data_frame.level, 
-                  high = data_frame.level, 
-                  low = data_frame.level, 
-                  close = data_frame.level, 
+                  open = data_frame.open, 
+                  high = data_frame.high, 
+                  low = data_frame.low, 
+                  close = data_frame.close, 
                   type = "candlestick", 
                   name = "XBTUSD"
                 ),
             ],
-            layout = (title = "Dash Data Visualization",)
+            layout = (title = "XBTUSD",)
         )
     end
 end
