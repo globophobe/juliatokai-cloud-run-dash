@@ -23,10 +23,13 @@ function open_websocket()
           trade_data = get(data, "data", nothing)
 
           for trade in trade_data
+            trade["notional"] = trade["size"] / trade["price"]
+
             pushfirst!(trades, trade)
-            if length(trades) > 25
+            if length(trades) > 10000
               pop!(trades) 
             end
+
           end
 
         end

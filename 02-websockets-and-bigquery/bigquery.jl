@@ -32,8 +32,8 @@ def query(credentials_file, dataset, table_name, date, location=None):
     table_id = f"{dataset}.{table_name}"
     sql = f'''
         SELECT * FROM {table_id}
-        WHERE date = @date
-        ORDER BY timestamp, index;
+        WHERE date >= @date
+        ORDER BY timestamp;
     '''
     return bq.query(sql, job_config=job_config)
 """
@@ -44,37 +44,31 @@ function load_dataframe(date)
     )
 
     timestamp = []
-    open = []
-    low = []
-    high = []
-    close = []
+    price = []
+    averagePrice = []
     buyVolume = []
     sellVolume = []
-    buyTicks = []
-    sellTicks = []
+    exponent = []
+    notional = []
  
     for row in result
       push!(timestamp, get(row, 1))
-      push!(open, get(row, 2))
-      push!(low, get(row, 3))
-      push!(high, get(row, 4))
-      push!(close, get(row, 5))
-      push!(buyVolume, get(row, 6))
-      push!(sellVolume, get(row, 7))
-      push!(buyTicks, get(row, 8))
-      push!(sellTicks, get(row, 9))
+      push!(price, get(row, 2))
+      push!(averagePrice, get(row, 3))
+      push!(buyVolume, get(row, 4))
+      push!(sellVolume, get(row, 5))
+      push!(exponent, get(row, 6))
+      push!(notional, get(row, 7))
     end
 
     DataFrames.DataFrame(
       timestamp = timestamp,
-      open = open,
-      low = low,
-      high = high,
-      close = close,
+      price = price,
+      averagePrice = averagePrice,
       buyVolume = buyVolume,
       sellVolume = sellVolume,
-      buyTicks = buyTicks,
-      sellTicks = sellTicks,
+      exponent = exponent,
+      notional = notional
     )
 end
 
