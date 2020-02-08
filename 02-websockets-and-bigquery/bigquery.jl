@@ -43,6 +43,7 @@ function load_dataframe(date)
       ENV[CREDENTIALS], ENV[DATASET], ENV[TABLE], date; location=ENV[LOCATION]
     )
 
+    date = []
     timestamp = []
     price = []
     averagePrice = []
@@ -52,6 +53,7 @@ function load_dataframe(date)
     notional = []
  
     for row in result
+      push!(date, get(row, 0))
       push!(timestamp, get(row, 1))
       push!(price, get(row, 2))
       push!(averagePrice, get(row, 3))
@@ -62,6 +64,7 @@ function load_dataframe(date)
     end
 
     DataFrames.DataFrame(
+      date = date,
       timestamp = timestamp,
       price = price,
       averagePrice = averagePrice,

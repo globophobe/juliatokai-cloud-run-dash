@@ -45,6 +45,9 @@ app = Dash("XBTUSD") do
             interval = 250,
             n_intervals = 0
         ),
+        html_div( style = Dict( "margin-left" => "1em", "margin-right" => "1em" )) do
+            html_h1( id = "header" )
+        end,
         dcc_slider( id = "slider", min = 0, max = 10, step = 0.5, value = 0 ),
         html_div( style = row_css ) do
             html_div( style = column_css ) do
@@ -58,15 +61,19 @@ app = Dash("XBTUSD") do
 end
 
 
+callback!(app, callid"slider.value => header.children") do value
+    if isnothing(value) throw(PreventUpdate()) end
+
+    "XBUSD $value notional"
+end
+
+
 callback!(app, callid"slider.value => chart.figure") do value
     if isnothing(value) throw(PreventUpdate()) end 
    
     df = data_frame[( data_frame.notional .> value ), :]
-    figure = get_figure(df)
-    
-    println(figure)
-  
-    figure
+
+    get_figure(df)
 end
 
 
